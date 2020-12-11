@@ -11,7 +11,7 @@ name: Deploy to Prod
 #       - "v**"
 on:
   push:
-    branches: [master]
+    branches: [main]
 jobs:
   deploy-next-serverless-aws:
     runs-on: ubuntu-latest
