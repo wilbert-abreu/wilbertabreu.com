@@ -24,10 +24,10 @@ wilbert-abreu-blog:
       username: ${env.USERNAME}
       password: ${env.PASSWORD}
 
-    cloudfront:
-      api/*:
-        forward:
-          headers: [Host]
+    # cloudfront:
+    #   api/*:
+    #     forward:
+    #       headers: [Host]
 
 
       # /post/*:
