@@ -15,7 +15,7 @@ on:
 jobs:
   deploy-next-serverless-aws:
     runs-on: ubuntu-latest
-    env:
+    # env:
       # AWS_DISTRIBUTION_ID: ${{secrets.AWS_DISTRIBUTION_ID}}
       # USERNAME: ${{secrets.USERNAME}}
       # PASSWORD: ${{secrets.PASSWORD}}
