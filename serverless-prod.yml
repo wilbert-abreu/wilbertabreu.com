@@ -20,9 +20,9 @@ wilbert-abreu-blog:
     runtime:
       defaultLambda: "nodejs12.x"
       apiLambda: "nodejs12.x"
-    authentication:
-      username: ${env.USERNAME}
-      password: ${env.PASSWORD}
+    # authentication:
+    #   username: ${env.USERNAME}
+    #   password: ${env.PASSWORD}
 
     # cloudfront:
     #   api/*:
