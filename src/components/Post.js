@@ -25,16 +25,16 @@ export default function Post({ meta, children, posts }) {
   return (
     <article className="xl:divide-y xl:divide-gray-200">
       <Head>
-        <title>{meta.title} – Tailwind CSS</title>
+        <title>{meta.title} – Wilbert Abreu</title>
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="@tailwindcss" />
-        <meta name="twitter:creator" content="@tailwindcss" />
-        <meta name="twitter:title" content={`${meta.title} – Tailwind CSS`} />
+        <meta name="twitter:site" content="@wilbert_abreu" />
+        <meta name="twitter:creator" content="@wilbert_abreu" />
+        <meta name="twitter:title" content={`${meta.title} – Wilbert Abreu`} />
         <meta name="twitter:description" content={meta.description} />
         <meta name="twitter:image" content={`https://wilbertabreu.com${meta.image}`} />
         <meta property="og:url" content={`https://wilbertabreu.com${router.pathname}`} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={`${meta.title} – Tailwind CSS`} />
+        <meta property="og:title" content={`${meta.title} – Wilbert Abreu`} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:image" content={`https://wilbertabreu.com${meta.image}`} />
         <meta name="description" content={meta.description}></meta>
