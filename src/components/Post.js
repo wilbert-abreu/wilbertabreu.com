@@ -53,36 +53,58 @@ export default function Post({ meta, children, posts }) {
             <PageTitle>{meta.title}</PageTitle>
           </div>
         </div>
+        {meta.tags && 
+          <dl className="pt-6 xl:pt-11">
+              <dt className="sr-only">Tags</dt>
+              <dd>
+                <ul className="flex justify-center">
+                  <span dangerouslySetInnerHTML={{__html: `Tags:&nbsp;` }}/>
+
+                  {meta.tags.map((tag, index) => (
+                      <li key={tag} className="flex items-center">
+                        <Link href={`/tag/${encodeURIComponent(tag)}`}>
+                          <a className='cursor-pointer' dangerouslySetInnerHTML={{__html: `${index !== 0 ? '&nbsp;': ''}<span class="underline">${tag}</span>${index !== meta.tags.length - 1 ? ',': ''}`}}/>
+                        </Link>
+                      </li>
+                    ))}
+                </ul>
+              </dd>
+            </dl>
+          }
       </header>
       <div
-        className="pb-16 divide-y divide-gray-200 xl:divide-y-0 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:pb-20"
+        className="pb-16 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:pb-20"
         style={{ gridTemplateRows: 'auto 1fr' }}
       >
-        <dl className="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200">
-          <dt className="sr-only">Authors</dt>
-          <dd>
-            <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8">
-              {meta.authors.map((author) => (
-                <li key={author.twitter} className="flex items-center space-x-2">
-                  <img src={author.avatar} alt="" className="w-10 h-10 rounded-full" />
-                  <dl className="text-sm font-medium leading-5 whitespace-nowrap">
-                    <dt className="sr-only">Name</dt>
-                    <dd className="text-gray-900 dark:text-white">{author.name}</dd>
-                    <dt className="sr-only">Twitter</dt>
-                    <dd>
-                      <a
-                        href={`https://twitter.com/${author.twitter}`}
-                        className="text-teal-500 hover:text-teal-600"
-                      >
-                        {author.twitter}
-                      </a>
-                    </dd>
-                  </dl>
-                </li>
-              ))}
-            </ul>
-          </dd>
-        </dl>
+        <div className="divide-y divide-gray-200 xl:divide-y-0">
+          <dl className="pt-6 pb-10 xl:pt-11 ">
+            <dt className="sr-only">Authors</dt>
+            <dd>
+              <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8">
+                {meta.authors.map((author) => (
+                  <li key={author.twitter} className="flex items-center space-x-2">
+                    <img src={author.avatar} alt="" className="w-10 h-10 rounded-full" />
+                    <dl className="text-sm font-medium leading-5 whitespace-nowrap">
+                      <dt className="sr-only">Name</dt>
+                      <dd className="text-gray-900 dark:text-white">{author.name}</dd>
+                      <dt className="sr-only">Twitter</dt>
+                      <dd>
+                        <a
+                          href={`https://twitter.com/${author.twitter}`}
+                          className="text-teal-500 hover:text-teal-600"
+                        >
+                          {author.twitter}
+                        </a>
+                      </dd>
+                    </dl>
+                  </li>
+                ))}
+              </ul>
+            </dd>
+          </dl>
+          <dl/>
+        </div>
+    
         <div className="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
           <div className="pt-10 pb-8 prose max-w-none dark:text-white">
             <MDXProvider components={mdxComponents}>{children}</MDXProvider>

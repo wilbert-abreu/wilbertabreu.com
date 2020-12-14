@@ -79,6 +79,22 @@ module.exports = withBundleAnalyzer({
           ],
         },
         {
+          resourceQuery: /preview/,
+          use: [
+            ...mdx,
+            createLoader(function (src) {
+              console.warn({src})
+              if (src.includes('<!--more-->')) {
+                const [preview] = src.split('<!--more-->')
+                return this.callback(null, preview)
+              }
+
+              const [preview] = src.split('<!--/excerpt-->')
+              return this.callback(null, preview.replace('<!--excerpt-->', ''))
+            }),
+          ],
+        },
+        {
           use: [
             ...mdx,
             createLoader(function (src) {
