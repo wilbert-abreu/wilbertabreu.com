@@ -28,7 +28,6 @@ const darkModeCookieKey = '_darkMode'
 const isDarkModeInitial = () => {
   const isDarkModeCookieValue = readCookie(darkModeCookieKey)
   const isMacDarkModeEnabled = process.browser && window?.matchMedia('(prefers-color-scheme: dark)').matches
-  console.warn({isDarkModeCookieValue, isMacDarkModeEnabled})
   if(isDarkModeCookieValue === undefined && isMacDarkModeEnabled) {
     return true
   }
@@ -42,7 +41,6 @@ const ColorModeProvider = ({ children}) => {
   const prevDarkModeValue = React.useRef(isDarkMode)
 
   React.useLayoutEffect(() => {
-    console.warn({isDarkMode})
     if(isDarkMode) {
       document.body.classList.add("dark")
       writeCookie(darkModeCookieKey, true)
@@ -106,9 +104,10 @@ export default function App({ Component, pageProps }) {
               (() => {
                 const readCookie = (key) => {
                   const match = document.cookie.match('(^|;)\\s*' + key + '\\s*=\\s*([^;]+)');
-                  return match ? match.pop() : '';
+                  return match ? match.pop() : undefined;
                 }
-                if(readCookie('_darkMode') === 'true') {
+                
+                if(readCookie('_darkMode') === 'true' || (readCookie('_darkMode') === undefined && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                   document.body.classList.add("dark")
                 }
               })()
