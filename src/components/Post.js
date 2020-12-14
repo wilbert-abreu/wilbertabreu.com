@@ -44,7 +44,7 @@ export default function Post({ meta, children, posts }) {
           <dl className="space-y-10">
             <div>
               <dt className="sr-only">Published on</dt>
-              <dd className="text-base font-medium leading-6 text-gray-500">
+              <dd className="text-base font-medium leading-6 text-gray-500 dark:text-white">
                 <time dateTime={meta.date}>{postDateTemplate.render(new Date(meta.date))}</time>
               </dd>
             </div>
@@ -55,7 +55,7 @@ export default function Post({ meta, children, posts }) {
         </div>
       </header>
       <div
-        className="pb-16 divide-y divide-gray-200 xl:divide-y-0 xl:grid xl:grid-cols-4 xl:col-gap-6 xl:pb-20"
+        className="pb-16 divide-y divide-gray-200 xl:divide-y-0 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:pb-20"
         style={{ gridTemplateRows: 'auto 1fr' }}
       >
         <dl className="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200">
@@ -65,9 +65,9 @@ export default function Post({ meta, children, posts }) {
               {meta.authors.map((author) => (
                 <li key={author.twitter} className="flex items-center space-x-2">
                   <img src={author.avatar} alt="" className="w-10 h-10 rounded-full" />
-                  <dl className="text-sm font-medium leading-5 whitespace-no-wrap">
+                  <dl className="text-sm font-medium leading-5 whitespace-nowrap">
                     <dt className="sr-only">Name</dt>
-                    <dd className="text-gray-900">{author.name}</dd>
+                    <dd className="text-gray-900 dark:text-white">{author.name}</dd>
                     <dt className="sr-only">Twitter</dt>
                     <dd>
                       <a
@@ -84,7 +84,7 @@ export default function Post({ meta, children, posts }) {
           </dd>
         </dl>
         <div className="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
-          <div className="pt-10 pb-8 prose max-w-none">
+          <div className="pt-10 pb-8 prose max-w-none dark:text-white">
             <MDXProvider components={mdxComponents}>{children}</MDXProvider>
           </div>
           {meta.discussion && (
@@ -103,7 +103,7 @@ export default function Post({ meta, children, posts }) {
             <div className="py-8 space-y-8">
               {next && (
                 <div>
-                  <h2 className="text-xs tracking-wide text-gray-500 uppercase">Next Article</h2>
+                  <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-white">Next Article</h2>
                   <div className="text-teal-500 hover:text-teal-600">
                     <Link href={next.link}>
                       <a>{next.title}</a>
@@ -113,7 +113,7 @@ export default function Post({ meta, children, posts }) {
               )}
               {previous && (
                 <div>
-                  <h2 className="text-xs tracking-wide text-gray-500 uppercase">
+                  <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-white">
                     Previous Article
                   </h2>
                   <div className="text-teal-500 hover:text-teal-600">

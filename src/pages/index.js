@@ -32,10 +32,10 @@ export default function Home() {
         <meta name="description" content={description} />
       </Head>
       <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
+        <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-white sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           Latest
         </h1>
-        <p className="text-lg leading-7 text-gray-500">
+        <p className="text-lg leading-7 text-gray-500 dark:text-white">
           All the latest musings from a life long learner
         </p>
       </div>
@@ -46,7 +46,7 @@ export default function Home() {
               <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                 <dl>
                   <dt className="sr-only">Published on</dt>
-                  <dd className="text-base font-medium leading-6 text-gray-500">
+                  <dd className="text-base font-medium leading-6 text-gray-500 dark:text-white">
                     <time dateTime={meta.date}>{postDateTemplate.render(new Date(meta.date))}</time>
                   </dd>
                 </dl>
@@ -54,10 +54,10 @@ export default function Home() {
                   <div className="space-y-6">
                     <h2 className="text-2xl font-bold leading-8 tracking-tight">
                       <Link href={link}>
-                        <a className="text-gray-900">{meta.title}</a>
+                        <a className="text-gray-900 dark:text-white">{meta.title}</a>
                       </Link>
                     </h2>
-                    <div className="prose text-gray-500 max-w-none">
+                    <div className="prose text-gray-500 dark:text-white max-w-none">
                       <Component />
                     </div>
                   </div>

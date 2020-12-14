@@ -3,27 +3,23 @@ import * as fs from 'fs'
 import * as path from 'path'
 
 class InlineStylesHead extends Head {
-  getCssLinks() {
-    return this.__getInlineStyles()
-  }
+	getCssLinks = ({ allFiles }) => {
+		const { assetPrefix } = this.context
+		if (!allFiles || allFiles.length === 0) return null
 
-  __getInlineStyles() {
-    const { assetPrefix, files } = this.context._documentProps
-    if (!files || files.length === 0) return null
-
-    return files
-      .filter((file) => /\.css$/.test(file))
-      .map((file) => (
-        <style
-          key={file}
-          nonce={this.props.nonce}
-          data-href={`${assetPrefix}/_next/${file}`}
-          dangerouslySetInnerHTML={{
-            __html: fs.readFileSync(path.join(process.cwd(), '.next', file), 'utf-8'),
-          }}
-        />
-      ))
-  }
+		return allFiles
+			.filter((file) => /\.css$/.test(file))
+			.map((file) => (
+				<style
+					key={file}
+					nonce={this.props.nonce}
+					data-href={`${assetPrefix}/_next/${file}`}
+					dangerouslySetInnerHTML={{
+						__html: fs.readFileSync(path.join(process.cwd(), '.next', file), 'utf-8'),
+					}}
+				/>
+			))
+	}
 }
 
 export default class Document extends NextDocument {

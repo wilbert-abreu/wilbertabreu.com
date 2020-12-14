@@ -1,0 +1,20 @@
+@import "~tailwindcss/base";
+  
+@import "~tailwindcss/components"; 
+ 
+@import "~tailwindcss/utilities";
+
+
+.dark {
+  background-color: #222831;
+  color: white;
+}
+
+.toggle-checkbox:checked {
+  right: 0;
+  border-color: #68D391;
+}
+
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #68D391;
+}

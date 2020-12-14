@@ -2,6 +2,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const mdx = require('@mdx-js/mdx')
 
 module.exports = {
+  darkMode: 'class',
   purge: {
     mode: 'all',
     content: ['./src/**/*.{js,mdx}', './next.config.js'],
