@@ -18,3 +18,19 @@
 .toggle-checkbox:checked + .toggle-label {
   background-color: #68D391;
 }
+
+.apple-pay-button {
+  cursor: pointer;
+  display: inline-block;
+  -webkit-appearance: -apple-pay-button;
+  -apple-pay-button-type: subscribe; /* Use any supported button type. */
+}
+.apple-pay-button-black {
+  -apple-pay-button-style: black;
+}
+.apple-pay-button-white {
+  -apple-pay-button-style: white;
+}
+.apple-pay-button-white-with-line {
+  -apple-pay-button-style: white-outline;
+}
