@@ -85,8 +85,8 @@ export default function Header() {
           const merchantSession = await performValidation(event.validationURL);
           console.warn({merchantSession})
           session.completeMerchantValidation(merchantSession)
-        } catch (e) {
-          console.error('onvalidatemerchant failed', {e})
+        } catch (error) {
+          console.error('onvalidatemerchant failed', {error})
         }
       }
 
