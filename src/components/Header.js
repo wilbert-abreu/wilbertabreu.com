@@ -14,13 +14,13 @@ export default function Header() {
     try {
       // console.warn({supportsVersion: ApplePaySession.supportsVersion(10)})
       if (!window?.ApplePaySession) {
-        throw 'This device is not capable of making Apple Pay payments: ApplePaySession undefined';
+        throw new Error('This device is not capable of making Apple Pay payments: ApplePaySession undefined')
       }
       if (!window.ApplePaySession?.supportsVersion(10)) {
-        throw 'This device is not capable of making Apple Pay payments: ApplePaySession version not supported';
+        throw new Error('This device is not capable of making Apple Pay payments: ApplePaySession version not supported')
       }
       if (!window.ApplePaySession?.canMakePayments()) {
-        throw 'This device is not capable of making Apple Pay payments';
+        throw new Error('This device is not capable of making Apple Pay payments')
       }
       
       window.ApplePaySession?.canMakePaymentsWithActiveCard('merchant.com.wilbertabreu')
