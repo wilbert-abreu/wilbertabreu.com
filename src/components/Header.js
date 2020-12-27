@@ -25,7 +25,7 @@ export default function Header() {
       
       window.ApplePaySession?.canMakePaymentsWithActiveCard('merchant.com.wilbertabreu')
         .then((isAbleToMakePayments) => {
-          if(!isAbleToMakePayments) throw 'User can not make payments with active card'
+          if(!isAbleToMakePayments) throw new Error('User can not make payments with active card')
           setIsAbleToMakePayments(true)
         })
     } catch(e) {
@@ -56,7 +56,7 @@ export default function Header() {
           currencyCode: 'USD'
         }
       }
-      const session = window?.ApplePaySession(10, ApplePayPaymentRequest)
+      const session = new ApplePaySession(10, ApplePayPaymentRequest)
 
       const sendPaymentToken = (paymentToken) => {
         return new Promise(function(resolve, reject) {
