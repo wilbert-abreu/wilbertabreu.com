@@ -1,6 +1,10 @@
-import fs from "fs";
+import fs, { createWriteStream } from "fs";
 import path from 'path';
 import whitelistedUrls from './whitelistedUrls'
+const {pipeline} = require('stream');
+const {promisify} = require('util');
+
+const streamPipeline = promisify(pipeline);
 
 
 const handler = async (req, res) => {
@@ -12,7 +16,10 @@ const handler = async (req, res) => {
 
         if(whitelistedUrls[url]) {
             try {
-                const cert = fs.readFileSync(path.resolve('src/pages/api/payment', `./merchant_id.cer`), "utf8");
+                const certFileResponse = await fetch('https://wilbert-abreu-blog-s3.s3.amazonaws.com/merchant_id.cer')
+                if (!certFileResponse.ok) throw new Error(`unexpected response ${response.statusText}`);
+                await streamPipeline(certFileResponse.body, createWriteStream('./merchant_id.cer'));
+                const cert = fs.readFileSync('./merchant_id.cer', "utf8");
 
                 const options = {
                     cert: cert,
