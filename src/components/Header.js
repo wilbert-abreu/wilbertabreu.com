@@ -71,7 +71,7 @@ export default function Header() {
       }
 
       const performValidation = (url) => {
-        return fetch('/payment/apple', {
+        return fetch('/api/payment/apple', {
           method: 'POST',
           body: JSON.stringify({url}),
           headers: {
@@ -81,7 +81,9 @@ export default function Header() {
       }
       session.onvalidatemerchant = async (event) => {
         try {
+          console.warn({event})
           const merchantSession = await performValidation(event.validationURL);
+          console.warn({merchantSession})
           session.completeMerchantValidation(merchantSession)
         } catch (e) {
           console.error('onvalidatemerchant failed', {e})
