@@ -49,6 +49,7 @@ export default function Header() {
         merchantCapabilities: [ 'supports3DS', 'supportsEMV', 'supportsCredit', 'supportsDebit' ],
         supportedNetworks: ['amex', 'masterCard', 'visa' ],
         countryCode: 'US',
+        currencyCode: 'USD',
         total: {
           type: 'final',
           label: 'Wilbert Abreu Blog',
