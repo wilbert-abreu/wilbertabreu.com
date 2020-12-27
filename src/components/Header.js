@@ -53,8 +53,7 @@ export default function Header() {
         total: {
           type: 'final',
           label: 'Wilbert Abreu Blog',
-          amount: '13.00',
-          currencyCode: 'USD'
+          amount: '13.00'
         }
       }
       const session = new ApplePaySession(10, ApplePayPaymentRequest)
