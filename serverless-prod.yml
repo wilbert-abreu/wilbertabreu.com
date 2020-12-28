@@ -12,7 +12,7 @@ wilbert-abreu-blog:
     description: "*lambda-type*@Edge for wilbert-abreu-blog"
     name:
       defaultLambda: wilbert-abreu-blog-lambda
-      apiLambda: wilbert-abreu-blog-lambda-api
+      apiLambda: wilbert-abreu-blog-lambda
     publicDirectoryCache: true
     # build:
     #   env:
