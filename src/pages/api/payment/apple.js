@@ -1,10 +1,11 @@
-import fs, { createWriteStream } from "fs";
-import path from 'path';
+// import fs, { createWriteStream, readFileSync } from "fs";
+// import path from 'path';
 import whitelistedUrls from './whitelistedUrls'
-const {pipeline} = require('stream');
-const {promisify} = require('util');
+// const {pipeline} = require('stream');
+// const {promisify} = require('util');
+import cert from './merchant_ids.cer'
 
-const streamPipeline = promisify(pipeline);
+// const streamPipeline = promisify(pipeline);
 
 
 const handler = async (req, res) => {
@@ -16,10 +17,15 @@ const handler = async (req, res) => {
 
         if(whitelistedUrls[url]) {
             try {
-                const certFileResponse = await fetch('https://wilbert-abreu-blog-s3.s3.amazonaws.com/merchant_id.cer')
-                if (!certFileResponse.ok) throw new Error(`unexpected response ${response.statusText}`);
-                await streamPipeline(certFileResponse.body, createWriteStream('./merchant_id.cer'));
-                const cert = fs.readFileSync('./merchant_id.cer', "utf8");
+                // console.warn({readFileSync: readFileSync('./merchant_ids.cer', "utf8")})
+                // const certFileResponse = await fetch('https://wilbert-abreu-blog-s3.s3.amazonaws.com/merchant_id.cer')
+                // if (!certFileResponse.ok) throw new Error(`unexpected response ${response.statusText}`);
+                // console.warn({})
+                // await streamPipeline(certFileResponse.body, createWriteStream('./merchant_ids.cer'));
+                // fs.existsSync('./merchant_ids.cer')
+                // const cert = readFileSync('./merchant_ids.cer', "utf8");
+                // console.warn();
+                // console.warn({cert})
 
                 const options = {
                     cert: cert,

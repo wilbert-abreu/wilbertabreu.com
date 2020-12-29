@@ -7,12 +7,16 @@ wilbert-abreu-blog:
     # policy: "arn:aws:iam::123456789012:policy/MyCustomPolicy"
     # roleArn: "arn:aws:iam::123456789012:role/MyCustomLambdaRole"
     domain: wilbertabreu.com
-    memory: 1024
+    memory:
+      defaultLambda: 1024
+      apiLambda: 2048
+      imageLambda: 2048
     bucketName: wilbert-abreu-blog-s3
     description: "*lambda-type*@Edge for wilbert-abreu-blog"
     name:
-      defaultLambda: wilbert-abreu-blog-lambda
-      apiLambda: wilbert-abreu-blog-lambda
+      defaultLambda: wilbert-abreu-blog-lambda-pages
+      apiLambda: wilbert-abreu-blog-lambda-api
+      imageLambda: wilbert-abreu-blog-lambda-image
     publicDirectoryCache: true
     # build:
     #   env:
