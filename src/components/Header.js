@@ -77,7 +77,13 @@ export default function Header() {
           headers: {
             'Content-Type': 'application/json'
           }
-        }).then((response) => response.json())
+        })
+        .then((response) => response.json())
+        .then(response => {
+          if(response.statusCode === 500) {
+            throw new Error(response)
+          }
+        })
       }
       session.onvalidatemerchant = async (event) => {
         try {
