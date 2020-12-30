@@ -3,7 +3,7 @@
 import whitelistedUrls from './whitelistedUrls'
 // const {pipeline} = require('stream');
 // const {promisify} = require('util');
-import cert from './merchant_ids.cer'
+import cert from './merchant_id.cer'
 
 // const streamPipeline = promisify(pipeline);
 
