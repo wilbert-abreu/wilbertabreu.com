@@ -39,7 +39,7 @@ module.exports = withBundleAnalyzer({
     })
 
     config.module.rules.push({
-      test: /\.cer$/i,
+      test: /\.pem$/i,
       use: [
         {
           loader: 'raw-loader',

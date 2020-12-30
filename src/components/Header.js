@@ -35,34 +35,21 @@ export default function Header() {
  
   const onClick = () => {
     try {
-      // const applePayMethod = {
-      //   supportedMethods: "https://apple.com/apple-pay",
-      //   data: {
-      //     version: 3,
-      //     merchantIdentifier: "merchant.com.example",
-      //     merchantCapabilities: ["supports3DS", "supportsCredit", "supportsDebit"],
-      //     supportedNetworks: ["amex", "discover", "masterCard", "visa"],
-      //     countryCode: "US",
-      //   },
-      // };
       const ApplePayPaymentRequest = {
-        merchantCapabilities: [ 'supports3DS', 'supportsEMV', 'supportsCredit', 'supportsDebit' ],
-        supportedNetworks: ['amex', 'masterCard', 'visa' ],
+        merchantCapabilities: [ 'supports3DS', 'supportsCredit', 'supportsDebit' ],
+        supportedNetworks: ['amex', 'masterCard', 'visa', 'discover'],
         countryCode: 'US',
         currencyCode: 'USD',
         total: {
           type: 'final',
           label: 'Wilbert Abreu Blog',
-          amount: '13.00'
+          amount: '1.00'
         }
       }
       const session = new ApplePaySession(10, ApplePayPaymentRequest)
 
       const sendPaymentToken = (paymentToken) => {
         return new Promise(function(resolve, reject) {
-          console.warn('starting function sendPaymentToken()');
-          console.warn(paymentToken);
-          
           if ( debug == true )
           resolve(true);
           else
@@ -78,16 +65,22 @@ export default function Header() {
             'Content-Type': 'application/json'
           }
         })
-        .then((response) => response.json())
-        .then(response => {
-          if(response.statusCode === 500) {
-            throw new Error(response)
+        .then(async response => {
+          if(!response.ok) {
+            const responseJson = await response.json();
+            const error = {
+              status: response.status,
+              statusText: response.statusText,
+              message: responseJson.error.message
+            };
+            return Promise.reject(new Error(error));
           }
+          return response;
         })
+        .then((response) => response.json())
       }
       session.onvalidatemerchant = async (event) => {
         try {
-          console.warn({event})
           const merchantSession = await performValidation(event.validationURL);
           console.warn({merchantSession})
           session.completeMerchantValidation(merchantSession)
