@@ -38,6 +38,18 @@ module.exports = withBundleAnalyzer({
       ],
     })
 
+    config.module.rules.push({
+      test: /\.cer$/i,
+      use: [
+        {
+          loader: 'raw-loader',
+          options: {
+            esModule: false,
+          },
+        },
+      ],
+    })
+
     const mdx = [
       options.defaultLoaders.babel,
       {
