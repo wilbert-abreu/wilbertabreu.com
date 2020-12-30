@@ -49,7 +49,7 @@ const handler = async (req, res) => {
                 console.warn({error})
                 res.statusCode = 500;
                 res.setHeader('Content-Type', 'application/json');
-                return res.end(JSON.stringify({ error }));
+                return res.send({ error: { ...error, statusCode: res.statusCode, stackTrace: error.stack } })
             }
         }
 
