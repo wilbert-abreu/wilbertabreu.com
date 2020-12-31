@@ -3,7 +3,8 @@ import '@/css/global.scss'
 import Head from 'next/head'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
-
+import MoonSvg from './moon.svg'
+import SunSvg from './sun.svg'
 const ColorModeContext = React.createContext();
 
 const readCookie = (key) => {
@@ -73,14 +74,18 @@ const useColor = () => {
 
 const ColorModeToggler = () => {
   const [isDarkMode, toggleDarkMode] = useColor()
+  const onClick = React.useCallback(() => {
+    toggleDarkMode()
+  }, [])
   return (
-    <div className="flex items-center justify-end mt-5">
-      <div className="relative right-0 inline-block w-10 mr-2 align-middle select-none">
-          <input onClick={() => toggleDarkMode()} type="checkbox" name="toggle" id="toggle" className="absolute block w-6 h-6 bg-white border-4 rounded-full outline-none appearance-none cursor-pointer toggle-checkbox" defaultChecked={isDarkMode}/>
-          <label for="toggle" className="block h-6 overflow-hidden bg-gray-300 rounded-full cursor-pointer toggle-label"></label>
+    <button onClick={onClick} className="block px-5 py-2 mt-2 bg-opacity-0 border-none outline-none appearance-none cursor-pointer">
+      <div className="relative w-12 h-2 duration-200 bg-gray-200 ease-only transition-bgColor rounded-2xl dark:bg-gray-600">
+        <div className="absolute flex items-center justify-center w-6 h-6 duration-200 transform bg-white shadow-md ease-only transition-bgColorTransformBoxShadow rounded-xl dark:bg-gray-700 dark:shadow-lg dark:translate-x-7 -left-1 -top-2">
+          <SunSvg className="opacity-100 transform translate-x-1.5 transition-opacity duration-200 w-3.5 h-3.5 fill-current text-transparent overflow-x-hidden overflow-y-hidden dark:opacity-0"/>
+          <MoonSvg className="opacity-0 transform -translate-x-1.5 transition-opacity duration-200 w-3.5 h-3.5 fill-current text-transparent overflow-x-hidden overflow-y-hidden dark:opacity-100"/>
+        </div>
       </div>
-      <label htmlFor="toggle" className={'text-xs text-gray-700 dark:text-white'}>Dark Mode?</label>
-    </div>
+    </button> 
   )
 }
 

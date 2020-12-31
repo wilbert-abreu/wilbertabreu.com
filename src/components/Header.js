@@ -25,7 +25,7 @@ export default function Header() {
       
       window.ApplePaySession?.canMakePaymentsWithActiveCard('merchant.com.wilbertabreu')
         .then((isAbleToMakePayments) => {
-          if(!isAbleToMakePayments) throw new Error('User can not make payments with active card')
+          if(!isAbleToMakePayments) return console.error('canMakePaymentsWithActiveCard: User can not make payments with active card');
           setIsAbleToMakePayments(true)
         })
     } catch(e) {

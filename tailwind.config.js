@@ -28,6 +28,24 @@ module.exports = {
   },
   theme: {
     extend: {
+      transitionProperty: {
+        'bgColor': 'background-color .2s ease',
+        'bgColorTransformBoxShadow': 'background-color .2s ease,box-shadow .2s ease,transform .2s ease',
+      },
+      transitionTimingFunction: {
+        'only': 'ease'
+      },
+      outline: {
+        'none': 'none',
+      },
+      translate: {
+        '-1.5': '-0.375rem',
+        // '7': '-1.75rem'
+      },
+      inset: {
+        '-1': '-1px',
+        '-2': '-8px'
+      },
       spacing: {
         '9/16': '56.25%',
       },
@@ -89,7 +107,15 @@ module.exports = {
       }),
     },
   },
-  variants: {},
+  variants: {
+    extend: {
+      transform: ['dark'],
+      translate: ['dark'],
+      opacity: ['dark'],
+      backgroundColor: ['dark']
+
+    }
+  },
   plugins: [
     require('@tailwindcss/ui'),
     require('@tailwindcss/typography'),
