@@ -8,6 +8,7 @@
 .dark {
   background-color: #222831;
   color: white;
+  transition: background-color .2s ease;
 }
 
 .toggle-checkbox:checked {

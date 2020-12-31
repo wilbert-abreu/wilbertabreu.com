@@ -29,8 +29,8 @@ module.exports = {
   theme: {
     extend: {
       transitionProperty: {
-        'bgColor': 'background-color .2s ease',
-        'bgColorTransformBoxShadow': 'background-color .2s ease,box-shadow .2s ease,transform .2s ease',
+        'bgColor': 'background-color',
+        'bgColorTransformBoxShadow': 'background-color, box-shadow, transform',
       },
       transitionTimingFunction: {
         'only': 'ease'

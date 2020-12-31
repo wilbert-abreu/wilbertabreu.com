@@ -1,7 +1,7 @@
-<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" data-test-icon-sun="" class="theme-switcher__indicator__sun">
-    <rect x="15" y="7" width="1" height="15" rx=".5" transform="rotate(90 15 7)" fill="#FECE70"></rect>
-    <rect x="8" y="15" width="1" height="15" rx=".5" transform="rotate(-180 8 15)" fill="#FECE70"></rect>
-    <rect x="12.607" y="2" width="1" height="15" rx=".5" transform="rotate(45 12.607 2)" fill="#FECE70"></rect>
-    <path d="M12.804 12.097a.5.5 0 1 1-.707.707l-9.9-9.9a.5.5 0 1 1 .707-.707l9.9 9.9z" fill="#FECE70"></path>
-    <circle cx="7.5" cy="7.5" r="4" fill="#FFC961" stroke="#fff"></circle>
+<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="15" y="7" width="1" height="15" rx=".5" transform="rotate(90 15 7)" fill="#151C1F"></rect>
+    <rect x="8" y="15" width="1" height="15" rx=".5" transform="rotate(-180 8 15)" fill="#151C1F"></rect>
+    <rect x="12.607" y="2" width="1" height="15" rx=".5" transform="rotate(45 12.607 2)" fill="#151C1F"></rect>
+    <path d="M12.804 12.097a.5.5 0 1 1-.707.707l-9.9-9.9a.5.5 0 1 1 .707-.707l9.9 9.9z" fill="#151C1F"></path>
+    <circle cx="7.5" cy="7.5" r="4" fill="#151C1F" stroke="#fff"></circle>
 </svg>
