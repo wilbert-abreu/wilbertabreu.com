@@ -35,3 +35,7 @@
 .apple-pay-button-white-with-line {
   -apple-pay-button-style: white-outline;
 }
+
+.tapHighlightColor-none:active {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
