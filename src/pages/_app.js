@@ -130,6 +130,15 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
         </main>
       </SectionContainer>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-K1G6CMMTLG" />
+      <script>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag("js", new Date());
+          gtag(\"config", "G-K1G6CMMTLG");
+        `}
+      </script>
     </div>
   )
 }

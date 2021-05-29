@@ -20,6 +20,9 @@ const tokenClassNames = {
 }
 
 module.exports = withBundleAnalyzer({
+  future: {
+    webpack5: true,
+  },
   pageExtensions: ['js', 'jsx', 'mdx'],
   experimental: {
     modern: true,

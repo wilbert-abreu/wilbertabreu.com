@@ -9,7 +9,7 @@ const posts = getAllPostPreviews()
 const postDateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
 
 const title = 'Blog – Wilbert Abreu'
-const description = 'Musings of an life long learner'
+const description = 'Musings of a Lifelong Learner'
 const twitterCardUrl = `https://wilbertabreu.com${twitterCard}`;
 const twitterHandle = "@wilbert_abreu"
 
@@ -36,7 +36,7 @@ export default function Home() {
           Latest
         </h1>
         <p className="text-lg leading-7 text-gray-500 dark:text-white">
-          All the latest musings from a life long learner
+          Musings of a lifelong learner
         </p>
       </div>
       <ul className="divide-y divide-gray-200">
