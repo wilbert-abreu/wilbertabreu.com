@@ -23,20 +23,16 @@ export default function Post({ meta, children, posts }) {
   const previous = posts[postIndex + 1]
   const next = posts[postIndex - 1]
 
-  const title = `Blog – Wilbert Abreu: ${meta.title}`
-
-  console.warn({meta})
-
   return (
     <article className="xl:divide-y xl:divide-gray-200">
       <Head>
-        <title>{title}</title>
+        <title>{meta.seotitle}</title>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@wilbert_abreu" />
         <meta name="twitter:creator" content="@wilbert_abreu" />
         <meta property="og:url" content={`https://wilbertabreu.com${router.pathname}`} />
         <meta property="og:type" content="article" />
-        <meta property="og:title" content={title} />
+        <meta property="og:title" content={meta.seotitle} />
         <meta property="og:description" content={meta.description} />
         <meta property="og:image" content={meta.image} />
         <meta name="description" content={meta.description}></meta>
