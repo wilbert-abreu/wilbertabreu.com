@@ -10,28 +10,28 @@ import { useState, useLayoutEffect } from 'react'
 export default function Header() {
   const [isAbleToMakePayments, setIsAbleToMakePayments] = useState(false)
   
-  useLayoutEffect(() => {
-    try {
-      // console.warn({supportsVersion: ApplePaySession.supportsVersion(10)})
-      if (!window?.ApplePaySession) {
-        throw new Error('This device is not capable of making Apple Pay payments: ApplePaySession undefined')
-      }
-      if (!window.ApplePaySession?.supportsVersion(10)) {
-        throw new Error('This device is not capable of making Apple Pay payments: ApplePaySession version not supported')
-      }
-      if (!window.ApplePaySession?.canMakePayments()) {
-        throw new Error('This device is not capable of making Apple Pay payments')
-      }
+  // useLayoutEffect(() => {
+  //   try {
+  //     // console.warn({supportsVersion: ApplePaySession.supportsVersion(10)})
+  //     if (!window?.ApplePaySession) {
+  //       throw new Error('This device is not capable of making Apple Pay payments: ApplePaySession undefined')
+  //     }
+  //     if (!window.ApplePaySession?.supportsVersion(10)) {
+  //       throw new Error('This device is not capable of making Apple Pay payments: ApplePaySession version not supported')
+  //     }
+  //     if (!window.ApplePaySession?.canMakePayments()) {
+  //       throw new Error('This device is not capable of making Apple Pay payments')
+  //     }
       
-      window.ApplePaySession?.canMakePaymentsWithActiveCard('merchant.com.wilbertabreu')
-        .then((isAbleToMakePayments) => {
-          if(!isAbleToMakePayments) return console.error('canMakePaymentsWithActiveCard: User can not make payments with active card');
-          setIsAbleToMakePayments(true)
-        })
-    } catch(e) {
-      console.warn({e})
-    }
-  }, [])
+  //     window.ApplePaySession?.canMakePaymentsWithActiveCard('merchant.com.wilbertabreu')
+  //       .then((isAbleToMakePayments) => {
+  //         if(!isAbleToMakePayments) return console.error('canMakePaymentsWithActiveCard: User can not make payments with active card');
+  //         setIsAbleToMakePayments(true)
+  //       })
+  //   } catch(e) {
+  //     console.warn({e})
+  //   }
+  // }, [])
  
   const onClick = () => {
     try {
@@ -122,7 +122,7 @@ export default function Header() {
           </a>
         </Link>
       </div>
-      {isAbleToMakePayments && <div class="apple-pay-button apple-pay-button-black" onClick={onClick} />}
+      {/* {isAbleToMakePayments && <div class="apple-pay-button apple-pay-button-black" onClick={onClick} />} */}
       {/* <Elements stripe={stripePromise}></Elements> */}
       {/* <div className="text-base leading-5">
         <a href="https://tailwindcss.com" className="font-medium text-gray-500 dark:text-white hover:text-gray-700">

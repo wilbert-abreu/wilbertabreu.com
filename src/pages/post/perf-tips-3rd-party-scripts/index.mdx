@@ -1,0 +1,107 @@
+import { me } from '@/authors'
+
+export const meta = {
+  title: 'Page Performance Tips: How to Inject 3rd Party Tips',
+  description: `Wilbert Abreu's Blog - Page Performance Tips: How to Inject 3rd Party Tips`,
+  date: '2021-08-10T09:00:00.000Z',
+  authors: [me],
+  image: me,
+  tags: ['page-performance', 'web-dev', 'tips', 'react']
+}
+
+3rd party scripts are a common culprit when diagnosing page performance issues across the web. 
+
+Whether it's
+analytics scripts/"pixels", chatbot scripts, etc.., chances are if you are an engineer, marketer, product person, or entrepreneur you've had to inject these scripts on your website.
+<!--more-->
+## What's the issue? 
+Some engineers might say the problem is the presence of the 3rd party scripts themselves. If you hear this, you have the green light to laugh at them out loud and walk away. 
+
+<div className="flex justify-center">
+  <img src="https://media.giphy.com/media/WRdmOfjRmRRjW/giphy.gif"  height="500" width="500"/>
+</div>
+
+The unfortunate reality is unless you are maybe Facebook, Amazon, Neflix or Google, you don't have the resources or time to build everthing you use in-house.
+
+For everyone else, we leverage "3rd Party tools" (tools/scripts that are built by other companies), to enhance or add some functionaility to our pages.
+
+The performance issues arise in how these scripts are added onto our pages. This is a prime no-no example:
+
+*The Don't Do This Example: Inject in head, no async or defer*
+```js
+<head>
+  <script src="https://pixelNeverDoThis.com"></script>
+</head>
+```
+
+Doing this means you are essentially telling the browser, "This is a high priority script, complete parsing this script now and forget about everything else".
+
+This blocks DOM parsing and rendering, delaying actual high priority resources, like your JS client chunks or images, from loading and negatively impacts almost every web metric you can think of.
+
+## Just tell me the right way!
+Ok, hold on, I will, but first here's a convoluted meme to confuse you:
+
+<div className="flex justify-center">
+  <img src="https://i.imgflip.com/5i9ih5.jpg"  height="600" width="300"/>
+</div>
+
+If you understood the above, congrats you're an Internet expert, here's your crown 👑.
+
+For everyone else, lets start with the best approach:
+
+```js
+<script>
+  (() => {
+    const injectScript = ({ src }) => {
+      const scriptEl = document.createElement('script')
+      scriptEl.setAttribute('type', 'text/javascript')
+      scriptEl.setAttribute('async', '')
+      scriptEl.src = src
+
+      document.body.appendChild(scriptEl)
+    }
+
+    // To Inject a Single Script
+    window.addEventListner('load', () => {
+      injectScript({ src: "https://pixel1.com")
+    }) 
+
+    // To Inject Multiple Scripts
+    // Example: Array of 3rd Party Scripts
+    const scriptsArray = ["https://script1.com", "https://script2.com"]
+    window.addEventListner('load', () => {
+      scriptsArray.forEach(src => injectScript({ src }))
+    }) 
+  })()
+</script>
+```
+If React is your cup of tea, as it is for me, you can also create a `useExternalScripts` hook like this:
+
+```js
+import injectScript from '@@util/injectScript'
+
+const useExternalScripts = ({ scriptsArray = []}) => {
+  React.useEffect(() => {
+    window.addEventListner('load', () => {
+      scriptsArray.forEach(src => injectScript({ src }))
+    }) 
+  }, [])
+}
+```
+
+## Why is this the best approach?
+The MDN docs (an Engineer's best friend), <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event">defines the "load" event</a>, as a browser event that "is fired when the whole page has loaded, including all dependent resources such as stylesheets and images."
+Other than stylesheets and images, the main visual indicator the "load" event affects is the loading spinner in the browsers tab bar. 
+In Chrome, it looks like this:
+
+<div className="flex justify-center">
+  <img src="/images/page-load-indicator.gif" height="600" width="300" /> 
+</div>
+
+In other words, after the "load" event is the perfect time to start loading all your lesser priority resources (3rd part scripts) that should not impact performance since the page has loaded already!
+
+---
+
+Thanks for reading everyone!
+
+Follow me <a href="https://twitter.com/wilbert_abreu">here</a>.

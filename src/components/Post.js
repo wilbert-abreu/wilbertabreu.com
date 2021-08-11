@@ -4,6 +4,7 @@ import tinytime from 'tinytime'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
+import Image from 'next/image'
 
 const mdxComponents = {
   pre: ({ className, ...props }) => (
@@ -54,7 +55,7 @@ export default function Post({ meta, children, posts }) {
           </div>
         </div>
         {meta.tags && 
-          <dl className="pt-6 xl:pt-11">
+          <dl className="pt-6 xl:pt-11 text-sm">
               <dt className="sr-only">Tags</dt>
               <dd>
                 <ul className="flex justify-center">
@@ -83,7 +84,7 @@ export default function Post({ meta, children, posts }) {
               <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8">
                 {meta.authors.map((author) => (
                   <li key={author.twitter} className="flex items-center space-x-2">
-                    <img src={author.avatar} alt="" className="w-10 h-10 rounded-full" />
+                    <Image src={author.avatar} alt={`${author.name}'s Profile Pic`} className="w-10 h-10 rounded-full" width="40" height="40" />
                     <dl className="text-sm font-medium leading-5 whitespace-nowrap">
                       <dt className="sr-only">Name</dt>
                       <dd className="text-gray-900 dark:text-white">{author.name}</dd>
@@ -96,6 +97,8 @@ export default function Post({ meta, children, posts }) {
                           {author.twitter}
                         </a>
                       </dd>
+                      <dt className="sr-only">Job Title</dt>
+                      <dd className="text-gray-800 dark:text-white text-xs pt-1">Senior Engineer @ American Express 🇩🇴</dd>
                     </dl>
                   </li>
                 ))}

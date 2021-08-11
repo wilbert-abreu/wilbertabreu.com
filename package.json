@@ -1,5 +1,5 @@
 {
-  "name": "tailwind-blog",
+  "name": "wilbert-abreu-blog",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -21,7 +21,7 @@
     "@tailwindcss/ui": "^0.7.2",
     "autoprefixer": "^10.1.0",
     "https": "^1.0.0",
-    "next": "^10.2.3",
+    "next": "^11.0.1",
     "postcss": "^8.2.1",
     "raw-loader": "^4.0.2",
     "react": "^17.0.2",
