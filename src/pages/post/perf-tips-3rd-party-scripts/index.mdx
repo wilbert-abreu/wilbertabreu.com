@@ -1,21 +1,21 @@
 import { me } from '@/authors'
 
 export const meta = {
-  title: 'Page Performance Tips: Best Way to Inject 3rd Party Scripts',
-  description: `Wilbert Abreu's Blog - Page Performance Tips: How to Inject 3rd Party Scripts`,
+  title: 'Page Performance Top Tip: Loading 3rd-Party JavaScript',
+  description: `Wilbert Abreu's Blog - Page Performance Top Tip: Loading 3rd-Party JavaScript`,
   date: '2021-08-10T09:00:00.000Z',
   authors: [me],
   image: 'https://i.imgflip.com/5i9ih5.jpg',
   tags: ['page-performance', 'web-dev', 'tips', 'react']
 }
 
-3rd party scripts are a common culprit when diagnosing page performance issues across the web. 
+3rd-party scripts are a common culprit when diagnosing page performance issues across the web. 
 
 Whether it's
 analytics scripts/"pixels", chatbot scripts, etc.., chances are if you are an engineer, marketer, product person, or entrepreneur you've had to inject these scripts on your website.
 <!--more-->
 ## What's the issue? 
-Some engineers might say the problem is the presence of the 3rd party scripts themselves. If you hear this, you have the green light to laugh at them out loud and walk away. 
+Some engineers might say the problem is the presence of the 3rd-party scripts themselves. If you hear this, you have the green light to laugh at them out loud and walk away. 
 
 <div className="flex justify-center">
   <img src="https://media.giphy.com/media/WRdmOfjRmRRjW/giphy.gif"  height="500" width="500"/>
@@ -23,7 +23,7 @@ Some engineers might say the problem is the presence of the 3rd party scripts th
 
 The unfortunate reality is unless you are maybe Facebook, Amazon, Neflix or Google, you don't have the resources or time to build everthing you use in-house.
 
-For everyone else, we leverage "3rd Party tools" (tools/scripts that are built by other companies), to enhance or add some functionaility to our pages.
+For everyone else, we leverage "3rd-party tools" (tools/scripts that are built by other companies), to enhance or add some functionaility to our pages.
 
 The performance issues arise in how these scripts are added onto our pages. This is a prime no-no example:
 
@@ -67,7 +67,7 @@ For everyone else, lets start with the best approach:
     }) 
 
     // To Inject Multiple Scripts
-    // Example: Array of 3rd Party Scripts
+    // Example: 3rd-Party Scripts Array
     const scriptsArray = ["https://script1.com", "https://script2.com"]
     window.addEventListner('load', () => {
       scriptsArray.forEach(src => injectScript({ src }))
@@ -98,7 +98,7 @@ In Chrome, it looks like this:
   <img src="/images/page-load-indicator.gif" height="600" width="300" /> 
 </div>
 
-In other words, after the "load" event is the perfect time to start loading all your lesser priority resources (3rd part scripts) that should not impact performance since the page has loaded already!
+In other words, after the "load" event is the perfect time to start loading all your lesser priority resources (3rd-party scripts) that should not impact performance since the page has loaded already!
 
 ---
 
