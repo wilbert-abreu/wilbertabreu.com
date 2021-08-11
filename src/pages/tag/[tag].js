@@ -23,14 +23,11 @@ export default function Tags() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content={twitterHandle} />
         <meta name="twitter:creator" content={twitterHandle} />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content={twitterCardUrl} />
         <meta property="og:url" content="https://wilbertabreu.com" />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:image" content={twitterCardUrl} />
+        <meta property="og:image" content="https://wilbertabreu.com/profile-pic.jpg"  />
         <title>{title}</title>
         <meta name="description" content={description} />
         </Head>
