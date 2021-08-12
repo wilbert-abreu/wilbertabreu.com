@@ -89,7 +89,6 @@ const useExternalScripts = ({ scriptsArray = []}) => {
   }, [])
 }
 ```
-
 ## Why is this the best approach?
 The MDN docs (an Engineer's best friend), <a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/load_event">defines the "load" event</a>, as a browser event that "is fired when the whole page has loaded, including all dependent resources such as stylesheets and images."
 Other than stylesheets and images, the main visual indicator the "load" event affects is the loading spinner in the browsers tab bar. 
@@ -100,6 +99,19 @@ In Chrome, it looks like this:
 </div>
 
 In other words, after the "load" event is the perfect time to start loading all your lesser priority resources (3rd-party scripts) that should not impact performance since the page has loaded already!
+
+## What kind of 3rd-party scrips should I use this for?
+This approach is specifically for lower "priority" 3rd party scripts (think non-visual, not needed for page rendering in the viewport). If it's required immediately for visual page rendering in some way, whether it be React or otherwise, then it should be higher priority and not use this approach.
+
+The rules of thumb are:
+
+* If it's absolutely needed for every one of your pages to render (or you can see it visually in the viewport on all pages), load it via a package manager.
+
+* If you only need it for a specific page or a subset (again visually in the viewport), install it via a package manager, but lazyload it.
+
+* If you only need it for a specific page or a subset (but it's not seen visually in the initial viewport), install it via a package manager, but lazyload it on scroll/click/another action.
+
+* If a package is not available for whatever reason (which is pretty common) and it's not seen visually in the viewport, then use this approach.
 
 ---
 
