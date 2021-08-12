@@ -100,7 +100,7 @@ In Chrome, it looks like this:
 
 In other words, after the "load" event is the perfect time to start loading all your lesser priority resources (3rd-party scripts) that should not impact performance since the page has loaded already!
 
-## What kind of 3rd-party scrips should I use this for?
+## What kind of 3rd-party scripts should I use this for?
 This approach is specifically for lower "priority" 3rd party scripts (think non-visual, not needed for page rendering in the viewport). If it's required immediately for visual page rendering in some way, whether it be React or otherwise, then it should be higher priority and not use this approach.
 
 The rules of thumb are:
