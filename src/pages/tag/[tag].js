@@ -1,7 +1,6 @@
 import tinytime from 'tinytime'
 import Link from 'next/link'
 import Head from 'next/head'
-import twitterCard from '@/img/profile-pic.jpg'
 import { getAllPostPreviewsByTag } from '@/getAllPostPreviews'
 import { useRouter } from 'next/router'
 
@@ -9,7 +8,6 @@ const postDateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
 
 const title = 'Blog – Wilbert Abreu - Tags'
 const description = 'Musings of an life long learner'
-const twitterCardUrl = `https://wilbertabreu.com${twitterCard}`;
 const twitterHandle = "@wilbert_abreu"
 
 export default function Tags() {
