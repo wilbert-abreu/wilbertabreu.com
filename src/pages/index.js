@@ -60,7 +60,7 @@ export default function Home() {
                               <span dangerouslySetInnerHTML={{__html: `Tags:&nbsp;` }}/>
 
                               {meta.tags.map((tag, index) => (
-                                  <li key={tag} className="flex items-start">
+                                  <li key={tag} className="flex items-center text-sm">
                                     <Link href={`/tag/${encodeURIComponent(tag)}`}>
                                       <a className='cursor-pointer' dangerouslySetInnerHTML={{__html: `${index !== 0 ? '&nbsp;': ''}<span class="underline">${tag}</span>${index !== meta.tags.length - 1 ? ',': ''}`}}/>
                                     </Link>
