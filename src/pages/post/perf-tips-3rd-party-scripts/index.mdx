@@ -6,7 +6,7 @@ export const meta = {
   description: 'Loading 3rd-Party JavaScript (Like a Boss)',
   date: '2021-08-11T08:00:00.000Z',
   authors: [me],
-  image: 'https://i.imgflip.com/5jbgbr.jpg',
+  image: '/images/perf-tips-3rd-party-scripts/galaxy-brain-meme.jpg',
   tags: ['page-performance', 'web-dev', 'tips', 'react']
 }
 
@@ -43,7 +43,7 @@ This blocks DOM parsing and rendering, delaying actual high priority resources, 
 Ok, hold on, I will, but first here's a convoluted meme to confuse you:
 
 <div className="flex justify-center">
-  <img src="https://i.imgflip.com/5jbgbr.jpg"  height="600" width="300"/>
+  <img src="/images/perf-tips-3rd-party-scripts/galaxy-brain-meme.jpg"  height="600" width="300"/>
 </div>
 
 If you understood the above, congrats you're an Internet expert, here's your crown 👑.
@@ -95,7 +95,7 @@ Other than stylesheets and images, the main visual indicator the "load" event af
 In Chrome, it looks like this:
 
 <div className="flex justify-center">
-  <img src="/images/page-load-indicator.gif" height="600" width="300" /> 
+  <img src="/images/perf-tips-3rd-party-scripts/page-load-indicator.gif" height="600" width="300" /> 
 </div>
 
 In other words, after the "load" event is the perfect time to start loading all your lesser priority resources (3rd-party scripts) that should not impact performance since the page has loaded already!
