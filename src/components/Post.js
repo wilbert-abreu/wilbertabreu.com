@@ -13,6 +13,9 @@ const mdxComponents = {
   'pre.code': ({ className, ...props }) => (
     <code className={`${className} text-gray-200`} {...props} />
   ),
+  'inlineCode': ({ ...props }) => (
+    <span className="bg-gray-100 p-1 rounded-sm dark:text-black" {...props} />
+  )
 }
 
 const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')

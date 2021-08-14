@@ -78,7 +78,7 @@ const ColorModeToggler = () => {
     toggleDarkMode()
   }, [])
   return (
-    <button onClick={onClick} className="block px-5 py-2 mt-2 ml-auto bg-opacity-0 border-none appearance-none cursor-pointer tapHighlightColor-none focus:outline-none">
+    <button onClick={onClick} className="block px-5 py-2 mt-2 pr-0 mr-0 ml-auto bg-opacity-0 border-none appearance-none cursor-pointer tapHighlightColor-none focus:outline-none">
       <div className="relative w-12 h-2 duration-200 bg-gray-200 ease-only transition-bgColor rounded-2xl dark:bg-gray-600">
         <div className="absolute flex items-center justify-center w-6 h-6 duration-200 transform bg-white shadow-md ease-only transition-bgColorTransformBoxShadow rounded-xl dark:bg-gray-700 dark:shadow-lg dark:translate-x-7 -left-1 -top-2">
           <SunSvg className="opacity-100 transform translate-x-1.5 transition-opacity duration-200 w-3.5 h-3.5 fill-current text-transparent overflow-x-hidden overflow-y-hidden dark:opacity-0"/>
@@ -119,10 +119,13 @@ export default function App({ Component, pageProps }) {
             `,
           }}
         ></script>
-      <SectionContainer>
-        <ColorModeProvider>
-          <ColorModeToggler />
-        </ColorModeProvider>
+      <SectionContainer className="flex h-15 justify-between align-center">
+        <div className="order-2 flex align-center">
+          <ColorModeProvider>
+            <ColorModeToggler />
+          </ColorModeProvider>
+        </div>
+        
         <Header />
       </SectionContainer>
       <SectionContainer>
