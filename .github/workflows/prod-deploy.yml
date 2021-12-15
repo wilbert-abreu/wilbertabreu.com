@@ -10,6 +10,7 @@ name: Deploy to Prod
 #     tags: # Deploy tag (e.g. v1.0) to production
 #       - "v**"
 on:
+  workflow_dispatch:
   push:
     branches: [main]
 jobs:
