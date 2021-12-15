@@ -15,10 +15,9 @@ on:
 jobs:
   deploy-next-serverless-aws:
     runs-on: ubuntu-latest
-    # env:
-      # AWS_DISTRIBUTION_ID: ${{secrets.AWS_DISTRIBUTION_ID}}
-      # USERNAME: ${{secrets.USERNAME}}
-      # PASSWORD: ${{secrets.PASSWORD}}
+    env:
+      POSTGRES_PROD_URL: ${{secrets.POSTGRES_PROD_URL}}
+      GMAIL_TOKEN: ${{secrets.GMAIL_TOKEN}}
 
     steps:
       - uses: actions/checkout@v2

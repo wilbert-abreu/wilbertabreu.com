@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { MDXProvider } from '@mdx-js/react'
 import Image from 'next/image'
+import Subscribe from '@/components/Subscribe'
 
 const mdxComponents = {
   pre: ({ className, ...props }) => (
@@ -111,6 +112,10 @@ export default function Post({ meta, children, posts }) {
         <div className="divide-y divide-gray-200 xl:pb-0 xl:col-span-3 xl:row-span-2">
           <div className="pt-10 pb-8 prose max-w-none dark:text-white">
             <MDXProvider components={mdxComponents}>{children}</MDXProvider>
+            <div className="max-w-sm">
+              <div className="mb-4">If you want get my latest posts via email:</div>
+              <Subscribe />
+            </div>         
           </div>
           {meta.discussion && (
             <div className="pt-6 pb-16">

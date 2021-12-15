@@ -1,5 +1,6 @@
 import React from 'react'
 import '@/css/global.scss'
+import useLayoutEffect from '@/utils/useLayoutEffect'
 import Head from 'next/head'
 import Header from '@/components/Header'
 import SectionContainer from '@/components/SectionContainer'
@@ -41,7 +42,7 @@ const ColorModeProvider = ({ children}) => {
   
   const prevDarkModeValue = React.useRef(isDarkMode)
 
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if(isDarkMode) {
       document.body.classList.add("dark")
       writeCookie(darkModeCookieKey, true)
@@ -92,7 +93,7 @@ const ColorModeToggler = () => {
 export default function App({ Component, pageProps }) {
 
   return (
-    <div className="antialiased">
+    <div className="antialiased h-full">
       <Head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

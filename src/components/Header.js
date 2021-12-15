@@ -122,6 +122,14 @@ export default function Header() {
           </a>
         </Link>
       </div>
+
+      <div className="pl-7">
+        <Link href="/email/subscribe">
+          <a aria-label="Subscribe to Blog - Wilbert Abreu">
+            Subscribe
+          </a>
+        </Link>
+      </div>
       {/* {isAbleToMakePayments && <div class="apple-pay-button apple-pay-button-black" onClick={onClick} />} */}
       {/* <Elements stripe={stripePromise}></Elements> */}
       {/* <div className="text-base leading-5">
