@@ -2,7 +2,7 @@
 name: wilbert-abreu-blog
 
 wilbert-abreu-blog:
-  component: "@sls-next/serverless-component@1.19.0-alpha.21"
+  component: "@sls-next/serverless-component@v3.6.0"
   inputs:
     # policy: "arn:aws:iam::123456789012:policy/MyCustomPolicy"
     # roleArn: "arn:aws:iam::123456789012:role/MyCustomLambdaRole"
