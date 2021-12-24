@@ -28,7 +28,10 @@ wilbert-abreu-blog:
     #   username: ${env.USERNAME}
     #   password: ${env.PASSWORD}
 
-    # cloudfront:
+    cloudfront:
+      defaults:
+          forward:
+            cookies: ['_darkMode']
     #   api/*:
     #     forward:
     #       headers: [Host]
