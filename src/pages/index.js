@@ -93,3 +93,9 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = ({ req: { cookies }}) => {
+  global.cookies = cookies
+
+  return { props: { } }
+}
