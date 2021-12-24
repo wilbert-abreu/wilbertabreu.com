@@ -23,7 +23,7 @@ const deleteCookie = key => {
 const darkModeCookieKey = '_darkMode'
 
 const isDarkModeInitial = () => {
-  const isDarkModeCookieValue = process.browser ? readCookie(darkModeCookieKey) : global.cookies[darkModeCookieKey]
+  const isDarkModeCookieValue = process.browser ? readCookie(darkModeCookieKey) : global?.cookies?.[darkModeCookieKey]
   const isMacDarkModeEnabled = process.browser && window?.matchMedia('(prefers-color-scheme: dark)').matches
 
   if(isDarkModeCookieValue === undefined && isMacDarkModeEnabled) {
