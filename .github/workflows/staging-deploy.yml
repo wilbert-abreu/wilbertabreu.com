@@ -1,0 +1,55 @@
+#
+# GitHub Action for Serverless NextJS staging environment
+#
+name: Deploy to Staging
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [develop]
+jobs:
+  deploy-next-serverless-aws:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - uses: canastro/copy-file-action@master
+        with:
+          source: "serverless-staging.yml"
+          target: "serverless.yml"
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: "12"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Serverless AWS authentication
+        run: npx serverless --component=@sls-next/serverless-component config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+      # comment out this section on initial deploy
+      # - name: Download `.serverless` state from S3
+      #   run: aws s3 sync s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/staging/.serverless .serverless --delete
+      # comment out this section on initial deploy
+
+      - name: Deploy to AWS
+        run: npx serverless
+
+      - name: Upload `.serverless` state to S3
+        run: aws s3 sync .serverless s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/staging/.serverless --delete
+
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.NOTIFY_SLACK_WEBHOOK }}
+          SLACK_USERNAME:  deploy-bot
+          SLACK_ICON:  https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/facebook-messenger-bots-robot.jpg?e2HI5ngWraq13ZjAOec1O6C6WAw5bHyB&itok=JL3-yeqn
+          SLACK_MESSAGE: 'Wilbert Abreu Blog Deployment Completed'

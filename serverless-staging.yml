@@ -1,0 +1,41 @@
+# Welcome to Serverless!
+name: wilbert-abreu-blog-staging
+
+wilbert-abreu-blog:
+  component: "@sls-next/serverless-component@v3.6.0"
+  inputs:
+    # policy: "arn:aws:iam::123456789012:policy/MyCustomPolicy"
+    # roleArn: "arn:aws:iam::123456789012:role/MyCustomLambdaRole"
+    domain: ["staging", "wilbertabreu.com"]
+    memory:
+      defaultLambda: 1024
+      apiLambda: 2048
+      imageLambda: 2048
+    bucketName: wilbert-abreu-blog-s3-staging
+    description: "*lambda-type*@Edge for wilbert-abreu-blog"
+    name:
+      defaultLambda: wilbert-abreu-blog-lambda-pages-staging
+      apiLambda: wilbert-abreu-blog-lambda-api-staging
+      imageLambda: wilbert-abreu-blog-lambda-image-staging
+    publicDirectoryCache: true
+    # build:
+    #   env:
+    #     NEXT_PUBLIC_GOOGLE_MAPS_KEY: ${env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}
+    runtime:
+      defaultLambda: "nodejs12.x"
+      apiLambda: "nodejs12.x"
+    # authentication:
+    #   username: ${env.USERNAME}
+    #   password: ${env.PASSWORD}
+
+    cloudfront:
+      defaults:
+          forward:
+            cookies: ['_darkMode']
+    #   api/*:
+    #     forward:
+    #       headers: [Host]
+
+
+      # /post/*:
+      #       ttl: 86400 # 1 day cache
