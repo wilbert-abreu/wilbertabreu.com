@@ -13,7 +13,7 @@ const readCookie = (key) => {
 }
 
 const writeCookie = (key, value) => {
-  document.cookie = `${key}=${value}`;
+  document.cookie = `${key}=${value}; path=/;`;
   return true;
 }
 const deleteCookie = key => {
