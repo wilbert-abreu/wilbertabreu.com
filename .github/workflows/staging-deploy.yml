@@ -47,9 +47,10 @@ jobs:
         run: aws s3 sync .serverless s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/staging/.serverless --delete
 
       - name: Slack Notification
+        if: always()
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.NOTIFY_SLACK_WEBHOOK }}
           SLACK_USERNAME:  deploy-bot
           SLACK_ICON:  https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/facebook-messenger-bots-robot.jpg?e2HI5ngWraq13ZjAOec1O6C6WAw5bHyB&itok=JL3-yeqn
-          SLACK_MESSAGE: 'Wilbert Abreu Blog Deployment Completed'
+          SLACK_MESSAGE: 'Wilbert Abreu Blog Staging Deployment ${{ job.status }}'

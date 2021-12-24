@@ -64,4 +64,4 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.NOTIFY_SLACK_WEBHOOK }}
           SLACK_USERNAME:  deploy-bot
           SLACK_ICON:  https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/facebook-messenger-bots-robot.jpg?e2HI5ngWraq13ZjAOec1O6C6WAw5bHyB&itok=JL3-yeqn
-          SLACK_MESSAGE: 'Wilbert Abreu Blog Deployment ${{ job.status }}'
+          SLACK_MESSAGE: 'Wilbert Abreu Blog Prod Deployment ${{ job.status }}'
