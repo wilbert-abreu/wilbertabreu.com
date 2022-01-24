@@ -1,25 +1,15 @@
 #
-# GitHub Action for Serverless NextJS production environment
+# GitHub Action for Serverless NextJS staging environment
 #
+name: Deploy to Staging
 
-
-
-name: Deploy to Prod
-# on:
-#   push:
-#     tags: # Deploy tag (e.g. v1.0) to production
-#       - "v**"
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [develop]
 jobs:
-  deploy-next-serverless-aws:
+  deploy-next-serverless-staging-aws:
     runs-on: ubuntu-latest
-    env:
-      POSTGRES_PROD_URL: ${{secrets.POSTGRES_PROD_URL}}
-      GMAIL_TOKEN: ${{secrets.GMAIL_TOKEN}}
-
     steps:
       - uses: actions/checkout@v2
 
@@ -32,7 +22,7 @@ jobs:
 
       - uses: canastro/copy-file-action@master
         with:
-          source: "serverless-prod.yml"
+          source: "serverless-staging.yml"
           target: "serverless.yml"
 
       - uses: actions/setup-node@v2-beta
@@ -47,14 +37,14 @@ jobs:
 
       # comment out this section on initial deploy
       - name: Download `.serverless` state from S3
-        run: aws s3 sync s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/prod/.serverless .serverless --delete
+        run: aws s3 sync s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/staging/.serverless .serverless --delete
       # comment out this section on initial deploy
 
       - name: Deploy to AWS
         run: npx serverless
 
       - name: Upload `.serverless` state to S3
-        run: aws s3 sync .serverless s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/prod/.serverless --delete
+        run: aws s3 sync .serverless s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/staging/.serverless --delete
 
       - name: Slack Notification
         if: always()
@@ -63,4 +53,4 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.NOTIFY_SLACK_WEBHOOK }}
           SLACK_USERNAME:  deploy-bot
           SLACK_ICON:  https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/facebook-messenger-bots-robot.jpg?e2HI5ngWraq13ZjAOec1O6C6WAw5bHyB&itok=JL3-yeqn
-          SLACK_MESSAGE: 'Wilbert Abreu Blog Prod Deployment ${{ job.status }}'
+          SLACK_MESSAGE: 'Wilbert Abreu Blog Staging Deployment ${{ job.status }}'
