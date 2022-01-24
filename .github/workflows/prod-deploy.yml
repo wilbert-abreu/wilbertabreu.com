@@ -19,6 +19,7 @@ jobs:
     env:
       POSTGRES_PROD_URL: ${{secrets.POSTGRES_PROD_URL}}
       GMAIL_TOKEN: ${{secrets.GMAIL_TOKEN}}
+      EMAIL_ADDRESS: ${{secrets.EMAIL_ADDRESS}}
 
     steps:
       - uses: actions/checkout@v2

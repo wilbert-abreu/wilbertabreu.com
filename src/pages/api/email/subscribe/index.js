@@ -7,7 +7,7 @@ const transporter = nodemailer.createTransport({
     port: 465,
     host: "smtp.gmail.com",
     auth: {
-        user: 'wilbertabreublog@gmail.com',
+        user: process.env.EMAIL_ADDRESS,
         pass: process.env.GMAIL_TOKEN,
     },
     secure: true,
@@ -35,7 +35,7 @@ const handler = async (req, res) => {
 
 
             const mailData = {
-                from: 'wilbertabreublog@gmail.com',
+                from: process.env.EMAIL_ADDRESS,
                 to: email,
                 subject: `Thanks for Subscribing!`,
                 html: `<div>Thanks for Subscribing to my blog</div>`

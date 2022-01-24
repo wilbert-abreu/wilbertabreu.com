@@ -61,7 +61,7 @@ const Subscribe = ({ emailType = 'subscribe' }) => {
 
     return ((isMobile || isTablet) && isSubscribePage) ? (
         <div className={styles.subscribe}>
-            <a className={`${styles.cta} ${styles.mobileCta} text-white`} href="mailto:subscribewilbertabreublog@gmail.com?subject=Subscribe%20Me%20Please!&body=Subscribe%20me%20to%20Wilbert%20Abreu's%20Blog!">
+            <a className={`${styles.cta} ${styles.mobileCta} text-white`} href={`mailto:subscribewilbertabreublog@gmail.com?subject=Subscribe%20Me%20Please!&body=Subscribe%20me%20to%20Wilbert%20Abreu's%20Blog!`}>
                 <TapSVG height="30" fill="white" className="pr-4"/>
                 {
                     subState === 'loading' && (
