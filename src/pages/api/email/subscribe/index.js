@@ -48,8 +48,6 @@ const handler = async (req, res) => {
                     console.log(info)
                 }      
             })
-
-            // await db.one(`${pgp.helpers.insert({ email, is_subscribed: true }, null, 'subscribers')} RETURNING id;`);
     
             return res.status(200).json({
                 email: req.body.email,

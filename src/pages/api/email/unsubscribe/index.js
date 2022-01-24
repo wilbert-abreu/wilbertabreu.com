@@ -10,8 +10,6 @@ const handler = async (req, res) => {
     
     const { email } = req.body
     if(email) {
-        // console.warn({sql: `${pgp.helpers.update({ is_subscribed: "false" }, ['is_subscribed'], 'subscribers')} WHERE "email" = "${email}";`})
-
         const subscriber = {
             is_subscribed: false
         }
@@ -21,10 +19,7 @@ const handler = async (req, res) => {
                 db(subscriber, 'is_subscribed')
             } where 
             email = ${email}
-        `
-        
-        // await db.one(`${pgp.helpers.update({ is_subscribed: false }, ['is_subscribed'], 'subscribers')} WHERE email = '${email}';`);
-        
+        `        
         return res.status(200).json({
             email: req.body.email
         })
