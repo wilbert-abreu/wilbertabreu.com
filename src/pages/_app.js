@@ -7,7 +7,7 @@ import { DarkModeProvider, DarkModeToggler } from '@/components/DarkModeEnabler'
 
 export default function App({ Component, pageProps }) {
   return (
-    <div className="antialiased">
+    <div className="antialiased h-full">
       <Head>
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

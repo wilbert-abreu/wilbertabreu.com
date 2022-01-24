@@ -1,5 +1,6 @@
 import MoonSvg from './moon.svg'
 import SunSvg from './sun.svg'
+import useLayoutEffect from '@/hooks/useLayoutEffect'
 
 const DarkModeContext = React.createContext();
 
@@ -47,7 +48,7 @@ export const DarkModeProvider = ({ children}) => {
       }
     });
   }, [])
-  React.useLayoutEffect(() => {
+  useLayoutEffect(() => {
     if(isDarkMode) {
       document.body.classList.add("dark")
       writeCookie(darkModeCookieKey, true)

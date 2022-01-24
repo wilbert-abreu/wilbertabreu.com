@@ -3,7 +3,13 @@
 @import "~tailwindcss/components"; 
  
 @import "~tailwindcss/utilities";
+@import "./reset.scss";
 
+html,
+body,
+body > div {
+  height: 100%;
+}
 .prose a {
   @apply text-blue-600;
 
@@ -12,11 +18,9 @@
   }
 }
 
-a:hover {
+a:hover:not([href*="mailto"]) {
   text-decoration: underline;
 }
-
-
 
 .dark {
   background-color: #222831;
@@ -27,7 +31,7 @@ a:hover {
     color: white;
   }
 
-  .prose a {
+  .prose a:not([href*="mailto"]) {
     color: rgb(6, 148, 162);
 
     &:hover {

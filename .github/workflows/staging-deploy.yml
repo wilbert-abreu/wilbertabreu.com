@@ -10,6 +10,11 @@ on:
 jobs:
   deploy-next-serverless-staging-aws:
     runs-on: ubuntu-latest
+    env:
+      POSTGRES_PROD_URL: ${{secrets.POSTGRES_PROD_URL}}
+      GMAIL_TOKEN: ${{secrets.GMAIL_TOKEN}}
+      EMAIL_ADDRESS: ${{secrets.EMAIL_ADDRESS}}
+
     steps:
       - uses: actions/checkout@v2
 
@@ -25,9 +30,9 @@ jobs:
           source: "serverless-staging.yml"
           target: "serverless.yml"
 
-      - uses: actions/setup-node@v2-beta
+      - uses: actions/setup-node@v2
         with:
-          node-version: "12"
+          node-version: "16"
 
       - name: Install dependencies
         run: npm ci

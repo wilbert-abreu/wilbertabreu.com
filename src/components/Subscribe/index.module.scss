@@ -1,0 +1,51 @@
+.subscribe {
+    height: 55px; 
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border: 1px solid red;
+    border-right: 0;
+    border-radius: 5px;
+    overflow: hidden;
+    min-height: 55px;
+
+    .input {
+        height: 100%;
+        width: 60%;
+        color: black;
+        padding-left: 10px; 
+
+        &:invalid {
+            border-color: red;
+        }
+    }
+
+    .cta {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        font-weight: 600;
+        color: white;
+        background-color: red;
+
+        &:hover {
+            background-color: darken(red, 10%);
+        }
+
+        &.mobileCta {
+            width: 100%;
+        }
+    }
+
+    
+}
+:global(.dark) {
+    .subscribe {
+        .input {
+            background-color: black;
+            color: white;
+        }
+    }
+}
