@@ -5,6 +5,11 @@ wilbert-abreu-blog:
   component: "@sls-next/serverless-component@v3.6.0"
   inputs:
     domain: wilbertabreu.com
+    build:
+      env:
+        POSTGRES_PROD_URL: ${{secrets.POSTGRES_PROD_URL}}
+        GMAIL_TOKEN: ${{secrets.GMAIL_TOKEN}}
+        EMAIL_ADDRESS: ${{secrets.EMAIL_ADDRESS}}
     memory:
       defaultLambda: 1024
       apiLambda: 2048
