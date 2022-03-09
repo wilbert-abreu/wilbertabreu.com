@@ -24,6 +24,11 @@ module.exports = withBundleAnalyzer({
   experimental: {
     modern: true,
   },
+  env: {
+    EMAIL_ADDRESS: process.env.EMAIL_ADDRESS,
+    POSTGRES_PROD_URL: process.env.POSTGRES_PROD_URL,
+    GMAIL_TOKEN: process.env.GMAIL_TOKEN
+  },
   webpack: (config, options) => {
     config.module.rules.push({
       test: /\.(svg|png|jpe?g|gif|mp4)$/i,
