@@ -10,7 +10,7 @@ const getDB = () => {
                 ...(dev && {ssl: {rejectUnauthorized: false}})
             })
         }
-    })
+    })  
 }
 
 export default getDB
