@@ -56,13 +56,14 @@ const handler = async (req, res) => {
                 message: "Successfully subscribed"
             })
         } catch (e) {
+            console.error({e, env: process.env})
             if(e.constraint = 'email unique') {
                 return res.status(200).json({
                     email: req.body.email,
                     message: "User already tried subscribed"
                 })
             }
-            console.error({e, env: process.env})
+            
             res.status(500).json({ error: e })
         }
         
