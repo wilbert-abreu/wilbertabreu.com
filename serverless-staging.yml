@@ -29,3 +29,7 @@ wilbert-abreu-blog:
           forward:
             cookies: ['_darkMode']
             headers: [Host]
+      api/*:
+          minTTL: 0
+          maxTTL: 0
+          defaultTTL: 0
