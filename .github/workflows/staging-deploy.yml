@@ -38,7 +38,7 @@ jobs:
         run: npm ci
 
       - name: Serverless AWS authentication
-        run: npx serverless --component=@sls-next/serverless-component config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: npx serverless@2.72.2 --component=@sls-next/serverless-component config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       # comment out this section on initial deploy
       - name: Download `.serverless` state from S3
@@ -46,7 +46,7 @@ jobs:
       # comment out this section on initial deploy
 
       - name: Deploy to AWS
-        run: npx serverless
+        run: npx serverless@2.72.2
 
       - name: Upload `.serverless` state to S3
         run: aws s3 sync .serverless s3://wilbert-abreu-blog-s3/wilbert-abreu-blog/staging/.serverless --delete
